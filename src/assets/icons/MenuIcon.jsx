@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 class MenuIcon extends Component {
     render() {
         return (
-            <div>
-                
+            <div className="container">
+                <div className="bar1"></div>
+                <div className="bar2"></div>
+                <div className="bar3"></div>
             </div>
         );
     }
