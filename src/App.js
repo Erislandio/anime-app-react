@@ -12,15 +12,16 @@ class App extends Component {
 
     this.state = {
       anime: null,
-      loading: true
+      loading: true,
+      search: ''
     }
 
     this.getAnimeData = this.getAnimeData.bind(this)
   }
 
 
-  getAnimeData() {
-    fetch('https://kitsu.io/api/edge//anime?filter[text]=naruto').then(res => {
+  getAnimeData(search) {
+    fetch(`https://kitsu.io/api/edge//anime?filter[text]=${search}`).then(res => {
       return res.json()
     }).then(data => {
       console.log(data)
@@ -33,6 +34,7 @@ class App extends Component {
   }
 
 
+
   render() {
     const { anime } = this.state
     console.log(this)
@@ -41,8 +43,8 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Header />
-        <Main data={this.state.anime.data}/>
+        <Header search={this.getAnimeData}/>
+        <Main data={this.state.anime.data} />
       </div>
     );
   }
